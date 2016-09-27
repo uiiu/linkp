@@ -1,0 +1,632 @@
+<p>
+<meta charset="utf-8" />
+<meta name="viewport" content="initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, user-scalable=no, width=device-width" />
+<meta content="no" name="apple-mobile-web-app-capable" />
+<meta content="black" name="apple-mobile-web-app-status-bar-style" />
+</p>
+<style>
+body,button,dd,dl,dt,fieldset,form,h1,h2,h3,h4,h5,h6,input,legend,li,ol,p,select,table,td,textarea,th,ul {margin: 0;padding: 0;}
+body {min-width: 320px; font-family: 'microsoft yahei',Verdana,Arial,Helvetica,sans8-serif; color: #000; -webkit-text-size-adjust: none;}
+fieldset,img {border: 0}
+ol,ul {list-style: none}
+address,em {font-style: normal}
+a {color: #000;text-decoration: none}
+table {border-collapse: collapse;}
+.clearfix:after {clear: both;content: " ";display: block;font-size: 0;height: 0;visibility: hidden}
+.clearfix {zoom: 1}
+
+.bd{width: 100%; min-width: 320px; overflow:hidden; background-color:#7220cc;}
+.bd img{display: block; width: 100%;}
+
+.titline{width: 100%; margin-top:.3rem; color: #FFF; }
+.titline p{padding: 0 2rem; margin:0 .4rem; height: 2rem; text-align: left; line-height: 2rem;  font-size: 1rem;background:url(http://img61.ddimg.cn/upload_img/00087/hw/mjSJ_hw160718_tit.jpg) no-repeat center; background-size:cover;}
+.titline p a{
+    float: right;
+    display: block;
+    height: 1.8rem;
+    line-height: 1.8rem;
+    border-radius: .2rem;
+    font-size: .8rem;
+    color: #FFF;
+}
+.books_box{width: 100%; overflow: hidden; height:900px;}
+.books_box ul{width: 98%; margin-left: 2%;}
+.books_box ul li{width: 48%; position: relative; float: left; margin: .2rem 2% .2rem 0; padding: .3rem 0; border-radius: .3rem; background-color: #FFF; font-size: .8rem;}
+.books_box ul li p{height: 1.3rem; padding: 0 .3rem; line-height: 1.3rem; white-space:nowrap; text-overflow:ellipsis; overflow:hidden;}
+.books_box ul li p.red{color: #fe435d; font-weight: bold; font-size: 1rem; font-family: "Arial";}
+.books_box ul li div{width: 1.8rem; position:absolute; bottom: .3rem; right: .3rem; padding: .2rem; background-color:#fd384c; z-index: 9; border-radius: .2rem; text-align: center; line-height: 1rem; color: #FFF;}
+.books_box ul li div a{display: block; color:#FFF; font-size: .8rem;}
+ 
+.timeline{width: 100%; height: 1.2rem; background-color:#e12c21;}
+#top{display:none; right:5px; bottom:5%; position:fixed; width:40px; height:40px; line-height:40px; font-size:14px; background-color:rgba(255,255,255, .5); cursor:pointer; border-radius:20px; text-align: center; border:1px solid #CCC; z-index:99;}
+#menu {position:fixed; font-size: .8rem; overflow: hidden; width: 100%; top: -41px; left: 0; z-index: 99;background-color: #ffffff; transition:top .2s;}
+#menu #ul {list-style: none; overflow: hidden; position: relative; top: 0;left: 0;}
+#menu #ul.ani {-webkit-transition: left .3s ease;-moz-transition: left .3s ease;-o-transition: left .3s ease;-ms-transition: left .3s ease; transition: left .3s ease;}
+#menu #ul li { display: inline-block;float: left;}
+#menu #ul li a {display: block;padding: 10px;}
+#menu #ul li {border-bottom: .1rem solid #a10103;}
+#menu #ul li.on {border-bottom: .1rem solid black;}
+#menu #ul li a {text-decoration: none;color: #a10103;}
+#menu #ul li.on a {color: orange;}
+#menu #ul li.block{width:26px; padding: 10px 0; display:block; height:auto;}
+#menu span{width: 26px; height:39px; position: absolute; right:0; top: 0; padding: 0; display: block; background:#FFF url(http://product.m.dangdang.com/images/arrow_down.png) no-repeat center; background-size: 12px; border-left: .1rem solid #DDD; border-bottom: .1rem solid #a10103; transition:all .5s;}
+#menu span.arrow-up{background:#FFF url(http://product.m.dangdang.com/images/arrow_up.png) no-repeat center; background-size: 12px;}
+.btn{padding: .1rem .2rem 1rem 0; overflow: hidden;}
+.btn ul{width: 100%; margin: 0;padding: 0;}
+.btn ul li{
+    width: 25%;
+    float: left;
+    padding: .2rem;
+    overflow: hidden;
+    text-align: center;
+    font-size: .7rem; 
+    box-sizing:border-box; line-height:1.5rem;
+}
+.btn ul li a{ display:inline-block; width: 94%;  margin: 0 .2rem .3rem .15rem; padding-left:6%; background-color: #fde547;  border-radius:6px;
+ box-shadow:0 .2rem 0 #b9a109, 0 .5rem 0 #2d0b61; color:#7426c8;}
+#content_list{z-index:999; display: none; width: 100%; top:0;position: fixed; right: 0; bottom: 0; left: 0; background-color: #FFF; overflow: hidden;}
+#content_list p{padding: 10px; margin: 0; position: relative; text-align: left; border-bottom: .1rem solid black; font-size: .8rem;}
+#content_list i{width: 26px; height:38px; position: absolute; right:0; top: 0; padding: 0; display: block; background:#FFF url(http://product.m.dangdang.com/images/arrow_up.png) no-repeat center; background-size: 12px; border-left: .1rem solid #DDD;}
+#content_list ul{margin: 0; padding: 10px 10px 30px; overflow: hidden; background-color: #FFF;}
+#content_list ul li{width: 25%; float: left; line-height: 2rem; list-style: none;}
+#content_list a{font-size: .9rem; color: #333;}
+#content_list div{overflow: hidden; padding-right: 1%; background-color: #FFF;}
+#content_list div a{width: 24%; height: 2rem; float: left; overflow: hidden; margin: .5rem 0 .5rem 1%; line-height: 2rem; font-size: .7rem; text-align: center; background-color: #CCC;}
+#content_list span{width: 50%; height: 2rem; display: block; margin: .5rem auto 0; line-height: 2rem; text-align: center; background-color: #ff6600; color: #FFF;}
+</style>
+
+<div id="top">Top</div>
+<div id="content_list">
+    <p>所有分类<i>&nbsp;</i></p>
+    <ul>
+        <li><a href="#">link1外</a></li>
+        <li><a href="#">link2文</a></li>
+        <li><a href="#">link3童</a></li>
+        <li><a href="#">link4</a></li>
+        <li><a href="#">link5</a></li>
+        <li><a href="#">link6</a></li>
+        <li><a href="#">link7</a></li>
+        <li><a href="#">link8</a></li>
+        <li><a href="#">link9</a></li>
+        <li><a href="#">link10</a></li>
+        <li><a href="#">link11</a></li>
+        <li><a href="#">link12</a></li>
+        <li><a href="#">link13</a></li>
+        <li><a href="#">link14</a></li>
+        <li><a href="#">link15</a></li>
+        <li><a href="#">link16</a></li>
+        <li><a href="#">link17</a></li>
+        <li><a href="#">link18</a></li>
+        <li><a href="#">link19</a></li>
+        <li><a href="#">link20</a></li>
+        <li><a href="#">link21</a></li>
+        <li><a href="#">link22</a></li>
+    </ul>
+    <p>分会场入口</p>
+    <div><a href="#">小说</a><a href="#">文学</a><a href="#">童书</a><a href="#">中小学教辅</a><a href="#">小说</a><a href="#">文学</a><a href="#">童书</a><a href="#">中小学教辅</a><a href="#">小说</a><a href="#">文学</a><a href="#">童书</a><a href="#">中小学教辅</a><a href="#">小说</a><a href="#">文学</a><a href="#">童书</a><a href="#">中小学教辅</a></div>
+    <span id="close_btn">关闭</span>
+</div>
+<div id="bd" class="bd"><img src="http://img63.ddimg.cn/upload_img/00087/hw/mjSJ_hw160718_01.jpg" alt="精选图书满200减100" /><img src="http://img62.ddimg.cn/upload_img/00087/hw/mjSJ_hw160718_02.jpg" alt="精选图书满200减100" />
+<div class="btn">
+<ul>
+<li><div><a href="http://mix.dangdang.com/">外链接</a></div></li>
+<li><div><a href="cms://page_id=80543">文学</a></div></li>
+<li><div><a href="cms://page_id=94461">童书</a></div></li>
+<li><div><a href="cms://page_id=80544">青春/动漫</a></div></li>
+<li><div><a href="cms://page_id=80545">艺术传记</a></div></li>
+<li><div><a href="cms://page_id=80546">成功/励志</a></div></li>
+<li><div><a href="cms://page_id=80547">经济/管理</a></div></li>
+<li><div><a href="cms://page_id=80548">投资/理财</a></div></li>
+<li><div><a href="cms://page_id=80549">历史/文化</a></div></li>
+<li><div><a href="cms://page_id=80550">哲学/心理</a></div></li>
+<li><div><a href="cms://page_id=80551">人文社科</a></div></li>
+<li><div><a href="cms://page_id=80552">保健/养生</a></div></li>
+<li><div><a href="cms://page_id=80553">旅游/美食</a></div></li>
+<li><div><a href="cms://page_id=80555">亲子家教</a></div></li>
+<li><div><a href="cms://page_id=80556">生活图书</a></div></li>
+<li><div><a href="cms://page_id=80557">科技图书</a></div></li>
+<li><div><a href="cms://page_id=80558">外语/考试</a></div></li>
+<li><div><a href="cms://page_id=80559">中小学教辅</a></div></li>
+</ul>
+</div>
+<section class="main">
+    <section id="menu">
+        <ul id="ul">
+            <li link="link1" class="link"><a href="#">link1</a></li>
+            <li link="link2" class="link"><a href="#">link2</a></li>
+            <li link="link3" class="link"><a href="#">link3</a></li>
+            <li link="link4" class="link"><a href="#">link4</a></li>
+            <li link="link5" class="link"><a href="#">link5</a></li>
+            <li link="link6" class="link"><a href="#">link6</a></li>
+            <li link="link7" class="link"><a href="#">link7</a></li>
+            <li link="link8" class="link"><a href="#">link8</a></li>
+            <li link="link9" class="link"><a href="#">link9</a></li>
+            <li link="link10" class="link"><a href="#">link10</a></li>
+            <li link="link11" class="link"><a href="#">link11</a></li>
+            <li link="link12" class="link"><a href="#">link12</a></li>
+            <li link="link13" class="link"><a href="#">link13</a></li>
+            <li link="link14" class="link"><a href="#">link14</a></li>
+            <li link="link15" class="link"><a href="#">link15</a></li>
+            <li link="link16" class="link"><a href="#">link16</a></li>
+            <li link="link17" class="link"><a href="#">link17</a></li>
+            <li link="link18" class="link"><a href="#">link18</a></li>
+            <li link="link19" class="link"><a href="#">link19</a></li>
+            <li link="link20" class="link"><a href="#">link20</a></li>
+            <li link="link21" class="link"><a href="#">link21</a></li>
+            <li link="link22" class="link"><a href="#">link22</a></li>
+            <li class="block">&nbsp;</li>
+        </ul>
+        <span></span>
+    </section>
+<div class="titline" id="link1" dd_name="小说更多"><p>小说<a href="category://cid=01.03.00.00.00.00">更多&gt;&gt;</a></p></div>
+
+<div class="books_box">         
+<ul>
+<li dd_name="追风筝的人系列套装（全三册）"><a href="product://pid=23568322"><img src="http://img4.ddimg.cn/mobile/gift/bg_pic.png" class="lazy" id="23568322" alt="追风筝的人系列套装（全三册）" imgsrc="http://img3x2.ddimg.cn/85/25/23568322-1_w.jpg"></a><p><a href="product://pid=23568322">追风筝的人系列套装（全三册）</a></p><p class="red">￥66.9</p><p>￥93</p><div><a href="product://pid=23568322">点击购买</a></div></li>
+<li dd_name="摆渡人"><a href="product://pid=23694647"><img src="http://img4.ddimg.cn/mobile/gift/bg_pic.png" class="lazy" id="23694647" alt="摆渡人" imgsrc="http://img3x7.ddimg.cn/86/32/23694647-1_w.jpg"></a><p><a href="product://pid=23694647">摆渡人</a></p><p class="red">￥20</p><p>￥36</p><div><a href="product://pid=23694647">点击购买</a></div></li>
+<li dd_name="岛上书店"><a href="product://pid=23685329"><img src="http://img4.ddimg.cn/mobile/gift/bg_pic.png" class="lazy" id="23685329" alt="岛上书店" imgsrc="http://img3x9.ddimg.cn/74/1/23685329-1_w.jpg"></a><p><a href="product://pid=23685329">岛上书店</a></p><p class="red">￥24.2</p><p>￥35</p><div><a href="product://pid=23685329">点击购买</a></div></li>
+<li dd_name="平凡的世界（全三册）"><a href="product://pid=22616096"><img src="http://img4.ddimg.cn/mobile/gift/bg_pic.png" class="lazy" id="22616096" alt="平凡的世界（全三册）" imgsrc="http://img3x6.ddimg.cn/41/31/22616096-1_w.jpg"></a><p><a href="product://pid=22616096">平凡的世界（全三册）</a></p><p class="red">￥55</p><p>￥79.8</p><div><a href="product://pid=22616096">点击购买</a></div></li>
+<li dd_name="乖，摸摸头（大冰暖心故事）"><a href="product://pid=23565712"><img src="http://img4.ddimg.cn/mobile/gift/bg_pic.png" class="lazy" id="23565712" alt="乖，摸摸头（大冰暖心故事）" imgsrc="http://img3x2.ddimg.cn/49/5/23565712-1_w.jpg"></a><p><a href="product://pid=23565712">乖，摸摸头（大冰暖心故事）</a></p><p class="red">￥24.7</p><p>￥36</p><div><a href="product://pid=23565712">点击购买</a></div></li>
+<li dd_name="舞男（严歌苓2016作品）"><a href="product://pid=23939361"><img src="http://img4.ddimg.cn/mobile/gift/bg_pic.png" class="lazy" id="23939361" alt="舞男（严歌苓2016作品）" imgsrc="http://img3x1.ddimg.cn/72/28/23939361-1_w.jpg"></a><p><a href="product://pid=23939361">舞男（严歌苓2016作品）</a></p><p class="red">￥26.6</p><p>￥37</p><div><a href="product://pid=23939361">点击购买</a></div></li>
+</ul>
+</div>
+
+<div class="titline" id="link2" dd_name="小说更多"><p>link2<a href="#">更多&gt;&gt;</a></p></div>
+<div class="books_box"></div>
+
+<div class="titline" id="link3" dd_name="小说更多"><p>link3<a href="#">更多&gt;&gt;</a></p></div>
+<div class="books_box"></div>
+
+<div class="titline" id="link4" dd_name="小说更多"><p>link4<a href="#">更多&gt;&gt;</a></p></div>
+<div class="books_box"></div>
+
+<div class="titline" id="link5" dd_name="小说更多"><p>link5<a href="#">更多&gt;&gt;</a></p></div>
+<div class="books_box"></div>
+
+<div class="titline" id="link6" dd_name="小说更多"><p>link6<a href="#">更多&gt;&gt;</a></p></div>
+<div class="books_box"></div>
+
+<div class="titline" id="link7" dd_name="小说更多"><p>link7<a href="#">更多&gt;&gt;</a></p></div>
+<div class="books_box"></div>
+
+<div class="titline" id="link8" dd_name="小说更多"><p>link8<a href="#">更多&gt;&gt;</a></p></div>
+<div class="books_box"></div>
+
+<div class="titline" id="link9" dd_name="小说更多"><p>link9<a href="#">更多&gt;&gt;</a></p></div>
+<div class="books_box"></div>
+
+<div class="titline" id="link10" dd_name="小说更多"><p>link10<a href="#">更多&gt;&gt;</a></p></div>
+<div class="books_box"></div>
+
+<div class="titline" id="link11" dd_name="小说更多"><p>link11<a href="#">更多&gt;&gt;</a></p></div>
+<div class="books_box"></div>
+
+<div class="titline" id="link12" dd_name="小说更多"><p>link12<a href="#">更多&gt;&gt;</a></p></div>
+<div class="books_box"></div>
+
+<div class="titline" id="link13" dd_name="小说更多"><p>link13<a href="#">更多&gt;&gt;</a></p></div>
+<div class="books_box"></div>
+
+<div class="titline" id="link14" dd_name="小说更多"><p>link14<a href="#">更多&gt;&gt;</a></p></div>
+<div class="books_box"></div>
+
+<div class="titline" id="link15" dd_name="小说更多"><p>link15<a href="#">更多&gt;&gt;</a></p></div>
+<div class="books_box"></div>
+
+<div class="titline" id="link16" dd_name="小说更多"><p>link16<a href="#">更多&gt;&gt;</a></p></div>
+<div class="books_box"></div>
+
+<div class="titline" id="link17" dd_name="小说更多"><p>link17<a href="#">更多&gt;&gt;</a></p></div>
+<div class="books_box"></div>
+
+<div class="titline" id="link18" dd_name="小说更多"><p>link18<a href="#">更多&gt;&gt;</a></p></div>
+<div class="books_box"></div>
+
+<div class="titline" id="link19" dd_name="小说更多"><p>link19<a href="#">更多&gt;&gt;</a></p></div>
+<div class="books_box"></div>
+
+<div class="titline" id="link20" dd_name="小说更多"><p>link20<a href="#">更多&gt;&gt;</a></p></div>
+<div class="books_box"></div>
+
+<div class="titline" id="link21" dd_name="小说更多"><p>link21<a href="#">更多&gt;&gt;</a></p></div>
+<div class="books_box"></div>
+
+<div class="titline" id="link22" dd_name="小说更多"><p>link22<a href="#">更多&gt;&gt;</a></p></div>
+<div class="books_box"></div>
+
+</section>
+</div>
+<script type="text/javascript">
+var oTop = document.getElementById('top');
+var scrH = document.documentElement.scrollTop || document.body.scrollTop;
+var oDiv = document.getElementById('Exp');
+var oDivbd = document.getElementById('bd');
+oTop.onclick = function(){
+        document.documentElement.scrollTop = document.body.scrollTop = 0;
+        oTop.style.display = 'none';
+    }
+var oMenu = document.getElementById('menu');
+var oArrow = oMenu.getElementsByTagName('span')[0];
+var oConList = document.getElementById('content_list');
+var oConListLi = oConList.getElementsByTagName('li');
+var oCloseBtn = document.getElementById('close_btn');
+var oArrow_down = oConList.getElementsByTagName('i')[0];
+oConList.style.height = document.body.clientHeight + 'px';
+var oA = true;
+oArrow.onclick = function(){
+    oConList.style.display = 'block';
+};
+oArrow_down.onclick = function(){
+    oConList.style.display = 'none';
+};
+oCloseBtn.onclick = function(){
+    oConList.style.display = 'none';
+    removeClass(oArrow, "arrow-up");
+    oA = !oA;
+};
+oConList.addEventListener('touchmove', function (event) {
+            event.preventDefault();
+},false);
+for(var i = 0; i < oConListLi.length; i++){
+    oConListLi[i].onclick = function(){
+        removeClass(oArrow, "arrow-up");
+        oConList.style.display = 'none';
+    }
+};
+</script>
+<script type="text/javascript">
+function load(){
+function hasClass(obj, cls){
+return obj.className.match(new RegExp("(\\s|^)" + cls + "(\\s|$)"));
+}
+function addClass(obj, cls){
+if(!this.hasClass(obj, cls)){
+obj.className += " " + cls;
+}
+}
+function removeClass(obj, cls){
+if(hasClass(obj, cls)){
+var reg = new RegExp("(\\s|^)" + cls + "(\\s|$)");
+obj.className = obj.className.replace(reg, "");
+}
+}
+function images(imgobj){
+var img = new Image();
+var imgsrc = imgobj.getAttribute("imgsrc");
+img.onload = function(){
+if(img.complete == true){
+imgobj.setAttribute("src", imgsrc);
+removeClass(imgobj, "lazy");
+imgobj.removeAttribute("imgsrc");
+}
+};
+img.src = imgsrc;
+}
+function loadImages(){
+var lazy = document.getElementsByClassName("lazy");
+for(var i = 0; i < lazy.length; i++){
+if(window.scrollY + window.innerHeight > lazy[i].offsetTop){
+images(lazy[i]);
+}
+}
+}
+setTimeout(function(){
+loadImages();
+}, 0);
+function addEvents(target, type, func){
+if(target.addEventListener){
+target.addEventListener(type, func, false);
+}else if(target.attachEvent){
+target.attachEvent("on" + type, func);
+}else{
+target["on" + type] = func;
+}
+}
+function removeEvents(target, type, func){
+if(target.removeEventListener){
+target.removeEventListener(type, func, false);
+}else if(target.detachEvent){
+target.detachEvent("on" + type, func);
+}else{
+target["on" + type] = null;
+}
+}
+removeEvents(window, "scroll", loadImages);
+addEvents(window, "scroll", loadImages);
+}
+window.onload = load();
+</script>
+<script type="text/javascript">
+function addEvent(target, type, func) {
+    if (target.addEventListener) {
+        target.addEventListener(type, func, false);
+    } else if (target.attachEvent) {
+        target.attachEvent("on" + type, func);
+    } else {
+        target["on" + type] = func;
+    }
+}
+function removeEvent(target, type, func) {
+    if (target.removeEventListener) {
+        target.removeEventListener(type, func, false);
+    } else if (target.detachEvent) {
+        target.detachEvent("on" + type, func);
+    } else {
+        target["on" + type] = null;
+    }
+}
+function getStyle(el, style) {
+    var realStyle = null;
+    if (el.currentStyle) {
+        realStyle = el.currentStyle[style];
+    } else if (window.getComputedStyle) {
+        realStyle = window.getComputedStyle(el, null)[style];
+    }
+    return parseInt(realStyle);
+}
+function addClass(el, classname) {
+    var reg = new RegExp("\\b" + classname + "\\b", "g");
+    if (!reg.test(el.className)) {
+        el.className += " " + classname;
+    }
+}
+function removeClass(el, classname) {
+    var reg = new RegExp("\\b" + classname + "\\b", "g"), blank = new RegExp("^\\s+|\\s+$", "g");
+    if (reg.test(el.className)) {
+        el.className = el.className.replace(reg, "");
+        el.className = el.className.replace(blank, "");
+    }
+}
+var con = document.getElementsByClassName("main")[0], ul = document.getElementById("ul"), li = ul.getElementsByTagName("li"), anchors = con.getElementsByClassName("titline"), menuW = 0, winW = window.innerWidth, winH = window.innerHeight, menuH = ul.clientHeight;
+var oSpan = con.getElementsByTagName('span')[0];
+if (li.length > 0) {
+    for (var i = 0; i < li.length; i++) {
+        menuW += li[i].clientWidth;
+    }
+    ul.style.width = (menuW + 1) + "px";
+}
+function menuScroll(x, y) {
+    if (Math.abs(x) > Math.abs(y)) {
+        var menuLeft = getStyle(ul, "left"), distance = 0;
+        if (x < 0) {
+            if (menuLeft > -(menuW - winW)) {
+                distance = menuLeft + x;
+            } else {
+                distance = -(menuW - winW);
+            }
+        } else {
+            if (menuLeft < 0) {
+                distance = menuLeft + x;
+            } else {
+                distance = 0;
+            }
+        }
+        ul.style.left = distance + "px";
+    }
+}
+removeEvent(con, "touchstart", touchReturn);
+addEvent(con, "touchstart", touchReturn);
+var mouse = {};
+mouse.ori_x = 0;
+mouse.ori_y = 0;
+mouse.x = 0;
+mouse.y = 0;
+mouse.X = 0;
+mouse.Y = 0;
+function touchStart(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!event.touches.length) {
+        return false;
+    }
+    var touch = e.touches[0];
+    mouse.ori_x = touch.pageX;
+    mouse.ori_y = touch.pageY;
+    mouse.x = touch.pageX;
+    mouse.y = touch.pageY;
+}
+function touchMove(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (!event.touches.length) {
+        return false;
+    }
+    var touch = e.touches[0];
+    mouse.X = touch.pageX - mouse.x;
+    mouse.Y = touch.pageY - mouse.y;
+    mouse.x = touch.pageX;
+    mouse.y = touch.pageY;
+    menuScroll(mouse.X, mouse.Y);
+}
+function touchEnd(e) {
+    e.preventDefault();
+    e.stopPropagation();
+    if (Math.abs(mouse.ori_x - mouse.x) <= 5 && Math.abs(mouse.ori_y - mouse.y) <= 5) {
+        aClick(e.target);
+    }
+    mouse.x = 0;
+    mouse.y = 0;
+    mouse.X = 0;
+    mouse.Y = 0;
+}
+function touchCancel(e) {
+    touchEnd(e);
+}
+function touchReturn(e) {
+    return;
+}
+removeEvent(ul, "touchstart", touchStart);
+removeEvent(ul, "touchmove", touchMove);
+removeEvent(ul, "touchend", touchEnd);
+removeEvent(ul, "touchcancel", touchCancel);
+addEvent(ul, "touchstart", touchStart);
+addEvent(ul, "touchmove", touchMove);
+addEvent(ul, "touchend", touchEnd);
+addEvent(ul, "touchcancel", touchCancel);
+function clearMenu() {
+    for (var i = 0; i < li.length; i++) {
+        removeClass(li[i], "on");
+    }
+}
+function menuPosition() {
+    var cur = ul.getElementsByClassName("on")[0], curW = cur.clientWidth, menuLeft = getStyle(ul, "left"), p = cur.offsetLeft, left = 0;
+    addClass(ul, "ani");
+    if ((p + curW / 2) > (winW / 2) && (p + curW / 2) < menuW - (winW / 2)) {
+        left = (winW - curW) / 2 - p;
+    } else if ((p + curW / 2) >= menuW - (winW / 2)) {
+        left = winW - menuW;
+    }
+    ul.style.left = left + "px";
+    setTimeout(function () {
+        removeClass(ul, "ani");
+    }, 300);
+}
+function aClick(obj) {
+    var that = obj, anchor = that.parentNode.getAttribute("link"), content = document.getElementById(anchor);
+    clearMenu();
+    addClass(that.parentNode, "on");  
+    window.scrollTo(0, content.offsetTop - menuH/2);
+    menuPosition();
+    removeClass(oArrow, "arrow-up");
+}
+window.onscroll=function(){
+    if((document.documentElement.scrollTop || document.body.scrollTop) <= 500){
+        oTop.style.display = 'none';
+    }else{
+        oTop.style.display = 'block';
+    }
+    var anchorTop = document.getElementsByClassName("titline")[0],
+    oM = document.getElementById('menu'),
+    menuH = oM.clientHeight;
+    if (window.scrollY > anchorTop.offsetTop-2*menuH) {
+       oM.style.top = 0;
+    } else {
+        oM.style.top = '-41px';
+    }
+}
+function jumpAnchor() {
+    if (window.scrollY + winH < document.body.offsetHeight) {
+        var sort = -1;
+        for (var i = anchors.length - 1; i >= 0; i--) {
+            if ((anchors[i].offsetTop - menuH) <= window.scrollY) {
+                sort = i;
+                break;
+            }
+        }
+        clearMenu();
+        if (sort >= 0) {
+            addClass(li[sort], "on");
+            menuPosition();
+        }
+    }
+}
+removeEvent(window, "scroll", jumpAnchor);
+addEvent(window, "scroll", jumpAnchor);
+var hash = window.location.hash;
+if (!!hash) {
+    hash = hash.replace(/#/g, "");
+    var num = -1;
+    for (var i = 0; i < anchors.length; i++) {
+        if (anchors[i].id == hash) {
+            num = i;
+            break;
+        }
+    }
+    if (num >= 0) {
+        aClick(li[num]);
+    }
+}
+function intval(v){
+                v = parseInt(v);
+                return isNaN(v) ? 0 : v;
+            }
+            function getPos(e){
+                var l = 0;
+                var t = -document.getElementById('menu').offsetHeight;
+                var w = intval(e.style.width);
+                var h = intval(e.style.height);
+                var wb = e.offsetWidth;
+                var hb = e.offsetHeight;
+                while (e.offsetParent) {
+                    l += e.offsetLeft + (e.currentStyle ? intval(e.currentStyle.borderLeftWidth) : 0);
+                    t += e.offsetTop + (e.currentStyle ? intval(e.currentStyle.borderTopWidth) : 0);
+                    e = e.offsetParent;
+                }
+                l += e.offsetLeft + (e.currentStyle ? intval(e.currentStyle.borderLeftWidth) : 0);
+                t += e.offsetTop + (e.currentStyle ? intval(e.currentStyle.borderTopWidth) : 0);
+                return {
+                    x: l,
+                    y: t,
+                    w: w,
+                    h: h,
+                    wb: wb,
+                    hb: hb
+                };
+            }
+            function getScroll(){
+                var t, l, w, h;
+                if (document.documentElement && document.documentElement.scrollTop) {
+                    t = document.documentElement.scrollTop;
+                    l = document.documentElement.scrollLeft;
+                    w = document.documentElement.scrollWidth;
+                    h = document.documentElement.scrollHeight;
+                }
+                else if (document.body) {
+                        t = document.body.scrollTop;
+                        l = document.body.scrollLeft;
+                        w = document.body.scrollWidth;
+                        h = document.body.scrollHeight;
+                    }
+                return {
+                    t: t,
+                    l: l,
+                    w: w,
+                    h: h
+                };
+            } 
+            function scroller(el, duration){
+                if (typeof el != 'object') {
+                    el = document.getElementById(el);
+                }
+                if (!el)
+                    return;
+                var z = this;
+                z.el = el;
+                z.p = getPos(el);
+                z.s = getScroll();
+                z.clear = function(){
+                    window.clearInterval(z.timer);
+                    z.timer = null
+                };
+                z.t = (new Date).getTime();
+                z.step = function(){
+                    var t = (new Date).getTime();
+                    var p = (t - z.t) / duration;
+                    if (t >= duration + z.t) {
+                        z.clear();
+                        window.setTimeout(function(){
+                            z.scroll(z.p.y, z.p.x)
+                        }, 13);
+                    }
+                    else {
+                        st = ((-Math.cos(p * Math.PI) / 2) + 0.5) * (z.p.y - z.s.t) + z.s.t;
+                        sl = ((-Math.cos(p * Math.PI) / 2) + 0.5) * (z.p.x - z.s.l) + z.s.l;
+                        z.scroll(st, sl);
+                    }
+                };
+                z.scroll = function(t, l){
+                    window.scrollTo(l, t)
+                };
+                z.timer = window.setInterval(function(){
+                    z.step();
+                }, 13);
+            }
+var liList = document.getElementById('content_list').getElementsByTagName('li');
+for (var i = 0; i < liList.length; i++) {
+    liList[i].index = i;
+    liList[i].onclick = function(){
+        scroller('link'+(this.index+1), 500);
+        oConList.style.display = 'none';
+    }
+};
+</script>
